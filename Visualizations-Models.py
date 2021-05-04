@@ -253,6 +253,56 @@ k1b=sns.kdeplot(movies.CriticRating,movies.AudienceRatings,size=7,cmap='Reds')
 #This happens because both graphs overlaps each other
 
 
+# In[94]:
+
+
+#Subplots
+
+
+# In[99]:
+
+
+k2=sns.kdeplot(movies.BudgetMillions,movies.CriticRating)
+sns.set_style('dark')
+
+
+# In[98]:
+
+
+k3=sns.kdeplot(movies.BudgetMillions,movies.AudienceRatings)
+
+
+# In[106]:
+
+
+f, axes=plt.subplots(1,2,figsize=(12,6))
+k2=sns.kdeplot(movies.BudgetMillions,movies.CriticRating,ax=axes[0])
+k3=sns.kdeplot(movies.BudgetMillions,movies.AudienceRatings,ax=axes[1])
+#Function subplot() is not the same as subplots()
+
+
+# In[107]:
+
+
+f, axes=plt.subplots(2,2,figsize=(12,6))
+k2=sns.kdeplot(movies.BudgetMillions,movies.CriticRating,ax=axes[0,0])
+k3=sns.kdeplot(movies.BudgetMillions,movies.AudienceRatings,ax=axes[0,1])
+#axes functions like an array of positions. For example: We set the position of k1 in the position [0,0] (first row and column)
+#The first two arguments of subplots() indicate the "matrix" of plots. In this case a 2x2 matrix.
+
+
+# In[114]:
+
+
+f, axes=plt.subplots(2,2,figsize=(12,6),sharex=True,sharey=True) 
+# shares makes all subplots "the same". Meaning that every configuration we make for a single plot in the 
+# X coordinates (the xlim for k2) will be applied to every other plot. Same for sharey in Y coordinates
+# All this makes things easier to compare.
+k2=sns.kdeplot(movies.BudgetMillions,movies.CriticRating,ax=axes[0,0]) 
+k3=sns.kdeplot(movies.BudgetMillions,movies.AudienceRatings,ax=axes[0,1])
+k2.set(xlim=(-30,200))#This makes k2 to go from -30 to 200 in the X coordinates.
+
+
 # In[ ]:
 
 
